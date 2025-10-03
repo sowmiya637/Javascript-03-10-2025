@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ES6 User Cards</title>
+  <style>
+    body { font-family: Arial; padding: 20px; text-align: center; }
+    .card {
+      border: 1px solid #aaa;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+      display: inline-block;
+      background: #f9f9f9;
+      box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    }
+    form input {
+      margin: 5px;
+      padding: 5px;
+      width: 150px;
+    }
+    form button {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Dynamic User Card Generator (ES6+)</h2>
+
+  <form id="userForm">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="number" id="age" placeholder="Age" required>
+    <input type="text" id="role" placeholder="Role" required>
+    <button type="submit">Add User</button>
+  </form>
+
+  <div id="container"></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

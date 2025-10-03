@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Timers Example</title>
+  <style>
+    body { 
+    font-family: Arial, sans-serif; 
+    padding: 20px; text-align: center; 
+}
+    #countdown {
+    font-size: 2rem; 
+    margin: 20px; 
+}
+    button { 
+        margin: 5px; 
+        padding: 10px 15px; 
+        font-size: 1rem; }
+  </style>
+</head>
+<body>
+  <h2>Timers Demo</h2>
+
+  <div id="countdown">10</div>
+
+  <button id="startBtn">Start Countdown</button>
+  <button id="stopBtn">Stop Countdown</button>
+  <button id="cancelMessageBtn">Cancel Message</button>
+
+  <script>
+    let countdownElement = document.getElementById("countdown");
+    let intervalId;   //This is a variable to store the ID returned by setInterval.
+    let messageTimeoutId;  //This is a variable to store the ID returned by setTimeout.
+
+    // Start Countdown
+    document.getElementById("startBtn").addEventListener("click", () => {
+      let count = 10;
+      countdownElement.textContent = count;
+
+      // setInterval → decrease every second
+      intervalId = setInterval(() => {  //function repeatedly run immediately
+        count--;
+        countdownElement.textContent = count;
+        if(count <= 0){
+          clearInterval(intervalId); // clearInterval when countdown ends
+          countdownElement.textContent = "Time's up!";
+        }
+      }, 1000);
+
+      // setTimeout → show a one-time message after 5 seconds
+      messageTimeoutId = setTimeout(() => {
+        alert("Halfway there! 5 seconds passed.");
+      }, 5000);
+    });
+
+    // Stop Countdown manually
+    document.getElementById("stopBtn").addEventListener("click", () => {
+      clearInterval(intervalId); // stop countdown
+      countdownElement.textContent = "Countdown stopped!";
+    });
+
+    // Cancel the one-time message
+    document.getElementById("cancelMessageBtn").addEventListener("click", () => {
+      clearTimeout(messageTimeoutId);
+      alert("Halfway message canceled!");
+    });
+  </script>
+</body>
+</html>
